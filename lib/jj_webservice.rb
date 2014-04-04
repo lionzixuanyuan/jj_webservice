@@ -19,8 +19,19 @@ module JjWebservice
       op.call.hash[:envelope][:body]["#{n}_response".to_sym]["#{n}_result".to_sym]
     end
 
+    def request_without_mallid(name, params={})
+      op = @client.operation 'Service', 'ServiceSoap', name
+      op.body = {name => params}
+      n = name.to_s.underscore
+      op.call.hash[:envelope][:body]["#{n}_response".to_sym]["#{n}_result".to_sym]
+    end
+
     def get_vip_info card_no
       request(:GetVipInfo, vipno: card_no)[:diffgram]
+    end
+
+    def get_vip_info_by_phone phone
+      request_without_mallid(:GetVipByPhoneNO, phoneno: phone)[:diffgram]
     end
   end
 end
