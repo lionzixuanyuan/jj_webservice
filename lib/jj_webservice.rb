@@ -33,5 +33,9 @@ module JjWebservice
     def get_vip_info_by_phone phone
       request_without_mallid(:GetVipByPhoneNO, phoneno: phone)[:diffgram]
     end
+
+    def get_history_list(card_num, bdate, edate)
+      request(:GetAccumulateList, vipno: card_no, vipno: card_num, bdate: bdate.strftime("%Y-%m-%d"), edate: edate.strftime("%Y-%m-%d"))[:diffgram]
+    end
   end
 end
