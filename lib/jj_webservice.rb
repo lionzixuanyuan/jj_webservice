@@ -35,7 +35,7 @@ module JjWebservice
     end
 
     def get_history_list(card_num, bdate, edate)
-      request(:GetAccumulateList, vipno: card_no, vipno: card_num, bdate: bdate.strftime("%Y-%m-%d"), edate: edate.strftime("%Y-%m-%d"))[:diffgram]
+      request(:GetAccumulateList, vipno: card_num, bdate: bdate.strftime("%Y-%m-%d"), edate: edate.strftime("%Y-%m-%d"))[:diffgram]
     end
   end
 end
